@@ -1,4 +1,4 @@
-cap
-===
+Post A Card
+===========
 
-Project Cap
+The "Post A Card" app allows you to easily send post cards to friends all over the world.

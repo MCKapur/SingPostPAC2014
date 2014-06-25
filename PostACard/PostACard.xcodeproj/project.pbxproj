@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		46330C661957C160006A7D80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46330C651957C160006A7D80 /* main.m */; };
+		46330C691957C160006A7D80 /* PACAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46330C681957C160006A7D80 /* PACAppDelegate.m */; };
+		46330C711957C160006A7D80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46330C701957C160006A7D80 /* Images.xcassets */; };
+		46330C7D1957C160006A7D80 /* PostACardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46330C7C1957C160006A7D80 /* PostACardTests.m */; };
+		465079A81957C51700E5662F /* PACQueryPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079A71957C51700E5662F /* PACQueryPayload.m */; };
+		465079AB1957C53500E5662F /* PACQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079AA1957C53500E5662F /* PACQuery.m */; };
+		465079AE1957C53E00E5662F /* PACQueryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079AD1957C53E00E5662F /* PACQueryRequest.m */; };
+		465079B11957C54400E5662F /* PACQueryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079B01957C54400E5662F /* PACQueryResponse.m */; };
+		465079BA1957C76600E5662F /* PACQueryPayload+ModularComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079B91957C76600E5662F /* PACQueryPayload+ModularComposer.m */; };
+		465079BD1957C7DD00E5662F /* PACDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079BC1957C7DD00E5662F /* PACDataStore.m */; };
+		465079C01957C7F500E5662F /* PACDataStorePredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079BF1957C7F500E5662F /* PACDataStorePredicate.m */; };
+		465079C61957C80A00E5662F /* PACFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079C51957C80A00E5662F /* PACFile.m */; };
+		465079C91957C82100E5662F /* PACUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079C81957C82100E5662F /* PACUser.m */; };
+		465079CC1957C83300E5662F /* PACCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079CB1957C83300E5662F /* PACCard.m */; };
+		465079EF1957CADB00E5662F /* PACNetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079EE1957CADB00E5662F /* PACNetworkingManager.m */; };
+		465079FB1957CB0B00E5662F /* PACCardSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079F21957CB0B00E5662F /* PACCardSelectViewController.m */; };
+		465079FC1957CB0B00E5662F /* PACCardSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079F41957CB0B00E5662F /* PACCardSendViewController.m */; };
+		465079FE1957CB0B00E5662F /* PACLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079F81957CB0B00E5662F /* PACLoginViewController.m */; };
+		465079FF1957CB0B00E5662F /* PACPhotoSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 465079FA1957CB0B00E5662F /* PACPhotoSelectViewController.m */; };
+		46507A021957CB9B00E5662F /* PACCardPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46507A011957CB9B00E5662F /* PACCardPreviewViewController.m */; };
+		46507A051957CD8200E5662F /* PACCardTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46507A041957CD8200E5662F /* PACCardTemplate.m */; };
+		46507A081957D45A00E5662F /* PACModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 46507A071957D45A00E5662F /* PACModelObject.m */; };
+		468C8518195A6C1F00EF4B6D /* PACCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 468C8517195A6C1F00EF4B6D /* PACCardView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46330C771957C160006A7D80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46330C581957C160006A7D80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46330C5F1957C160006A7D80;
+			remoteInfo = PostACard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		46330C601957C160006A7D80 /* PostACard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostACard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46330C641957C160006A7D80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46330C651957C160006A7D80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		46330C671957C160006A7D80 /* PACAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PACAppDelegate.h; sourceTree = "<group>"; };
+		46330C681957C160006A7D80 /* PACAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PACAppDelegate.m; sourceTree = "<group>"; };
+		46330C701957C160006A7D80 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		46330C761957C160006A7D80 /* PostACardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostACardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46330C7B1957C160006A7D80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46330C7C1957C160006A7D80 /* PostACardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostACardTests.m; sourceTree = "<group>"; };
+		465079A61957C51700E5662F /* PACQueryPayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACQueryPayload.h; sourceTree = "<group>"; };
+		465079A71957C51700E5662F /* PACQueryPayload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACQueryPayload.m; sourceTree = "<group>"; };
+		465079A91957C53500E5662F /* PACQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACQuery.h; sourceTree = "<group>"; };
+		465079AA1957C53500E5662F /* PACQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACQuery.m; sourceTree = "<group>"; };
+		465079AC1957C53E00E5662F /* PACQueryRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACQueryRequest.h; sourceTree = "<group>"; };
+		465079AD1957C53E00E5662F /* PACQueryRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACQueryRequest.m; sourceTree = "<group>"; };
+		465079AF1957C54400E5662F /* PACQueryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACQueryResponse.h; sourceTree = "<group>"; };
+		465079B01957C54400E5662F /* PACQueryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACQueryResponse.m; sourceTree = "<group>"; };
+		465079B51957C60700E5662F /* PACConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACConstants.h; sourceTree = "<group>"; };
+		465079B71957C70600E5662F /* PACPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACPrefix.pch; sourceTree = "<group>"; };
+		465079B81957C76600E5662F /* PACQueryPayload+ModularComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PACQueryPayload+ModularComposer.h"; sourceTree = "<group>"; };
+		465079B91957C76600E5662F /* PACQueryPayload+ModularComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PACQueryPayload+ModularComposer.m"; sourceTree = "<group>"; };
+		465079BB1957C7DD00E5662F /* PACDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACDataStore.h; sourceTree = "<group>"; };
+		465079BC1957C7DD00E5662F /* PACDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACDataStore.m; sourceTree = "<group>"; };
+		465079BE1957C7F500E5662F /* PACDataStorePredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACDataStorePredicate.h; sourceTree = "<group>"; };
+		465079BF1957C7F500E5662F /* PACDataStorePredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACDataStorePredicate.m; sourceTree = "<group>"; };
+		465079C41957C80A00E5662F /* PACFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACFile.h; sourceTree = "<group>"; };
+		465079C51957C80A00E5662F /* PACFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACFile.m; sourceTree = "<group>"; };
+		465079C71957C82100E5662F /* PACUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACUser.h; sourceTree = "<group>"; };
+		465079C81957C82100E5662F /* PACUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACUser.m; sourceTree = "<group>"; };
+		465079CA1957C83300E5662F /* PACCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACCard.h; sourceTree = "<group>"; };
+		465079CB1957C83300E5662F /* PACCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACCard.m; sourceTree = "<group>"; };
+		465079ED1957CADB00E5662F /* PACNetworkingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACNetworkingManager.h; sourceTree = "<group>"; };
+		465079EE1957CADB00E5662F /* PACNetworkingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACNetworkingManager.m; sourceTree = "<group>"; };
+		465079F11957CB0B00E5662F /* PACCardSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACCardSelectViewController.h; sourceTree = "<group>"; };
+		465079F21957CB0B00E5662F /* PACCardSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACCardSelectViewController.m; sourceTree = "<group>"; };
+		465079F31957CB0B00E5662F /* PACCardSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACCardSendViewController.h; sourceTree = "<group>"; };
+		465079F41957CB0B00E5662F /* PACCardSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACCardSendViewController.m; sourceTree = "<group>"; };
+		465079F71957CB0B00E5662F /* PACLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACLoginViewController.h; sourceTree = "<group>"; };
+		465079F81957CB0B00E5662F /* PACLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACLoginViewController.m; sourceTree = "<group>"; };
+		465079F91957CB0B00E5662F /* PACPhotoSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACPhotoSelectViewController.h; sourceTree = "<group>"; };
+		465079FA1957CB0B00E5662F /* PACPhotoSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACPhotoSelectViewController.m; sourceTree = "<group>"; };
+		46507A001957CB9B00E5662F /* PACCardPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACCardPreviewViewController.h; sourceTree = "<group>"; };
+		46507A011957CB9B00E5662F /* PACCardPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACCardPreviewViewController.m; sourceTree = "<group>"; };
+		46507A031957CD8200E5662F /* PACCardTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACCardTemplate.h; sourceTree = "<group>"; };
+		46507A041957CD8200E5662F /* PACCardTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACCardTemplate.m; sourceTree = "<group>"; };
+		46507A061957D45A00E5662F /* PACModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACModelObject.h; sourceTree = "<group>"; };
+		46507A071957D45A00E5662F /* PACModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACModelObject.m; sourceTree = "<group>"; };
+		468C8516195A6C1F00EF4B6D /* PACCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PACCardView.h; sourceTree = "<group>"; };
+		468C8517195A6C1F00EF4B6D /* PACCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PACCardView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46330C5D1957C160006A7D80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46330C731957C160006A7D80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46330C571957C160006A7D80 = {
+			isa = PBXGroup;
+			children = (
+				46330C621957C160006A7D80 /* PostACard */,
+				46330C791957C160006A7D80 /* PostACardTests */,
+				46330C611957C160006A7D80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		46330C611957C160006A7D80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46330C601957C160006A7D80 /* PostACard.app */,
+				46330C761957C160006A7D80 /* PostACardTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46330C621957C160006A7D80 /* PostACard */ = {
+			isa = PBXGroup;
+			children = (
+				46330C671957C160006A7D80 /* PACAppDelegate.h */,
+				46330C681957C160006A7D80 /* PACAppDelegate.m */,
+				465079F01957CB0B00E5662F /* View Controllers */,
+				4650799F1957C4BE00E5662F /* Views */,
+				465079A11957C4BE00E5662F /* Data */,
+				465079A21957C4BE00E5662F /* Networking */,
+				465079A31957C4BE00E5662F /* Models */,
+				465079B61957C61E00E5662F /* Resources */,
+				46330C631957C160006A7D80 /* Supporting Files */,
+			);
+			path = PostACard;
+			sourceTree = "<group>";
+		};
+		46330C631957C160006A7D80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				465079B51957C60700E5662F /* PACConstants.h */,
+				465079B71957C70600E5662F /* PACPrefix.pch */,
+				46330C641957C160006A7D80 /* Info.plist */,
+				46330C651957C160006A7D80 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46330C791957C160006A7D80 /* PostACardTests */ = {
+			isa = PBXGroup;
+			children = (
+				46330C7C1957C160006A7D80 /* PostACardTests.m */,
+				46330C7A1957C160006A7D80 /* Supporting Files */,
+			);
+			path = PostACardTests;
+			sourceTree = "<group>";
+		};
+		46330C7A1957C160006A7D80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				46330C7B1957C160006A7D80 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4650799F1957C4BE00E5662F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				468C8516195A6C1F00EF4B6D /* PACCardView.h */,
+				468C8517195A6C1F00EF4B6D /* PACCardView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		465079A11957C4BE00E5662F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				465079C41957C80A00E5662F /* PACFile.h */,
+				465079C51957C80A00E5662F /* PACFile.m */,
+				465079BE1957C7F500E5662F /* PACDataStorePredicate.h */,
+				465079BF1957C7F500E5662F /* PACDataStorePredicate.m */,
+				465079BB1957C7DD00E5662F /* PACDataStore.h */,
+				465079BC1957C7DD00E5662F /* PACDataStore.m */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		465079A21957C4BE00E5662F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				465079A61957C51700E5662F /* PACQueryPayload.h */,
+				465079A71957C51700E5662F /* PACQueryPayload.m */,
+				465079B81957C76600E5662F /* PACQueryPayload+ModularComposer.h */,
+				465079B91957C76600E5662F /* PACQueryPayload+ModularComposer.m */,
+				465079A91957C53500E5662F /* PACQuery.h */,
+				465079AA1957C53500E5662F /* PACQuery.m */,
+				465079AC1957C53E00E5662F /* PACQueryRequest.h */,
+				465079AD1957C53E00E5662F /* PACQueryRequest.m */,
+				465079AF1957C54400E5662F /* PACQueryResponse.h */,
+				465079B01957C54400E5662F /* PACQueryResponse.m */,
+				465079ED1957CADB00E5662F /* PACNetworkingManager.h */,
+				465079EE1957CADB00E5662F /* PACNetworkingManager.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		465079A31957C4BE00E5662F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				46507A061957D45A00E5662F /* PACModelObject.h */,
+				46507A071957D45A00E5662F /* PACModelObject.m */,
+				465079C71957C82100E5662F /* PACUser.h */,
+				465079C81957C82100E5662F /* PACUser.m */,
+				46507A031957CD8200E5662F /* PACCardTemplate.h */,
+				46507A041957CD8200E5662F /* PACCardTemplate.m */,
+				465079CA1957C83300E5662F /* PACCard.h */,
+				465079CB1957C83300E5662F /* PACCard.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		465079B61957C61E00E5662F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				46330C701957C160006A7D80 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		465079F01957CB0B00E5662F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				465079F71957CB0B00E5662F /* PACLoginViewController.h */,
+				465079F81957CB0B00E5662F /* PACLoginViewController.m */,
+				465079F91957CB0B00E5662F /* PACPhotoSelectViewController.h */,
+				465079FA1957CB0B00E5662F /* PACPhotoSelectViewController.m */,
+				465079F11957CB0B00E5662F /* PACCardSelectViewController.h */,
+				465079F21957CB0B00E5662F /* PACCardSelectViewController.m */,
+				46507A001957CB9B00E5662F /* PACCardPreviewViewController.h */,
+				46507A011957CB9B00E5662F /* PACCardPreviewViewController.m */,
+				465079F31957CB0B00E5662F /* PACCardSendViewController.h */,
+				465079F41957CB0B00E5662F /* PACCardSendViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		46330C5F1957C160006A7D80 /* PostACard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46330C801957C160006A7D80 /* Build configuration list for PBXNativeTarget "PostACard" */;
+			buildPhases = (
+				46330C5C1957C160006A7D80 /* Sources */,
+				46330C5D1957C160006A7D80 /* Frameworks */,
+				46330C5E1957C160006A7D80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PostACard;
+			productName = PostACard;
+			productReference = 46330C601957C160006A7D80 /* PostACard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		46330C751957C160006A7D80 /* PostACardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46330C831957C160006A7D80 /* Build configuration list for PBXNativeTarget "PostACardTests" */;
+			buildPhases = (
+				46330C721957C160006A7D80 /* Sources */,
+				46330C731957C160006A7D80 /* Frameworks */,
+				46330C741957C160006A7D80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46330C781957C160006A7D80 /* PBXTargetDependency */,
+			);
+			name = PostACardTests;
+			productName = PostACardTests;
+			productReference = 46330C761957C160006A7D80 /* PostACardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46330C581957C160006A7D80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Rohan Kapur";
+				TargetAttributes = {
+					46330C5F1957C160006A7D80 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					46330C751957C160006A7D80 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 46330C5F1957C160006A7D80;
+					};
+				};
+			};
+			buildConfigurationList = 46330C5B1957C160006A7D80 /* Build configuration list for PBXProject "PostACard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 46330C571957C160006A7D80;
+			productRefGroup = 46330C611957C160006A7D80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				46330C5F1957C160006A7D80 /* PostACard */,
+				46330C751957C160006A7D80 /* PostACardTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46330C5E1957C160006A7D80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46330C711957C160006A7D80 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46330C741957C160006A7D80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46330C5C1957C160006A7D80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				465079FF1957CB0B00E5662F /* PACPhotoSelectViewController.m in Sources */,
+				465079CC1957C83300E5662F /* PACCard.m in Sources */,
+				465079AE1957C53E00E5662F /* PACQueryRequest.m in Sources */,
+				465079A81957C51700E5662F /* PACQueryPayload.m in Sources */,
+				46330C691957C160006A7D80 /* PACAppDelegate.m in Sources */,
+				465079BA1957C76600E5662F /* PACQueryPayload+ModularComposer.m in Sources */,
+				465079BD1957C7DD00E5662F /* PACDataStore.m in Sources */,
+				468C8518195A6C1F00EF4B6D /* PACCardView.m in Sources */,
+				465079C61957C80A00E5662F /* PACFile.m in Sources */,
+				46507A081957D45A00E5662F /* PACModelObject.m in Sources */,
+				465079C91957C82100E5662F /* PACUser.m in Sources */,
+				465079FB1957CB0B00E5662F /* PACCardSelectViewController.m in Sources */,
+				46330C661957C160006A7D80 /* main.m in Sources */,
+				465079C01957C7F500E5662F /* PACDataStorePredicate.m in Sources */,
+				465079EF1957CADB00E5662F /* PACNetworkingManager.m in Sources */,
+				465079FC1957CB0B00E5662F /* PACCardSendViewController.m in Sources */,
+				465079B11957C54400E5662F /* PACQueryResponse.m in Sources */,
+				465079AB1957C53500E5662F /* PACQuery.m in Sources */,
+				465079FE1957CB0B00E5662F /* PACLoginViewController.m in Sources */,
+				46507A051957CD8200E5662F /* PACCardTemplate.m in Sources */,
+				46507A021957CB9B00E5662F /* PACCardPreviewViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46330C721957C160006A7D80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46330C7D1957C160006A7D80 /* PostACardTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46330C781957C160006A7D80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46330C5F1957C160006A7D80 /* PostACard */;
+			targetProxy = 46330C771957C160006A7D80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		46330C7E1957C160006A7D80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = PostACard/PACPrefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		46330C7F1957C160006A7D80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREFIX_HEADER = PostACard/PACPrefix.pch;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		46330C811957C160006A7D80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = PostACard/PACPrefix.pch;
+				"GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS[arch=*]" = "";
+				INFOPLIST_FILE = PostACard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		46330C821957C160006A7D80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = PostACard/PACPrefix.pch;
+				INFOPLIST_FILE = PostACard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		46330C841957C160006A7D80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PostACard.app/PostACard";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PostACardTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		46330C851957C160006A7D80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PostACard.app/PostACard";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PostACardTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46330C5B1957C160006A7D80 /* Build configuration list for PBXProject "PostACard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46330C7E1957C160006A7D80 /* Debug */,
+				46330C7F1957C160006A7D80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46330C801957C160006A7D80 /* Build configuration list for PBXNativeTarget "PostACard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46330C811957C160006A7D80 /* Debug */,
+				46330C821957C160006A7D80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46330C831957C160006A7D80 /* Build configuration list for PBXNativeTarget "PostACardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46330C841957C160006A7D80 /* Debug */,
+				46330C851957C160006A7D80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46330C581957C160006A7D80 /* Project object */;
+}
