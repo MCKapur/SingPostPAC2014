@@ -8,8 +8,8 @@
 
 #import "PACCardTemplate.h"
 #import "PACCard.h"
-#import "PACUser.h"
 #import "PACFile.h"
+#import "PACUser.h"
 #import "PACQueryPayload.h"
 #import "PACQueryPayload+ModularComposer.h"
 #import "PACDataStorePredicate.h"
@@ -31,16 +31,18 @@
  */
 - (BOOL)removeModelObject:(PACModelObject *)modelObject;
 /**
- Add the file object if it does
- not already exist in the in-mem
- cache, if it does then replace it.
- Equality based on filename matches.
+ Add the file object if it
+ does not already exist in
+ the in-mem cache, if it does
+ then replace it. Equality
+ based on filename matching.
  */
 - (void)addOrModifyFile:(PACFile *)file;
 /**
- Remove the file object if it
- exists in the in-mem cache,
- equality based on filename matches.
+ Remove the file object
+ if it exists in the
+ in-mem cache, equality
+ based on filename matching.
  */
 - (BOOL)removeFileWithFilename:(NSString *)filename;
 @end
@@ -71,7 +73,6 @@
         [self addObject:file];
     else
         [self replaceObjectAtIndex:index withObject:file];
-    
 }
 - (BOOL)removeModelObject:(PACModelObject *)modelObject {
     if (![modelObject isKindOfClass:[PACModelObject class]])
@@ -91,15 +92,17 @@
         if ([((PACFile *)self[i]).filename isEqualToString:filename])
             index = i;
     }
-    if (index != NSNotFound)
+    if (index != NSNotFound) {
+        [((PACFile *)self[index]) purge];
         [self removeObjectAtIndex:index];
+    }
     return (index != NSNotFound);
 }
 @end
 
 @implementation NSArray (Filtering)
 - (NSArray *)filteredArrayUsingDataStorePredicate:(PACDataStorePredicate *)predicate {
-    NSArray *retVal = [self filteredArrayUsingPredicate:predicate];
+    NSArray *retVal = [self filteredArrayUsingPredicate:[predicate NSPredicateRepresentation]];
     if (predicate.sortDescriptor)
         retVal = [retVal sortedArrayUsingDescriptors:@[predicate.sortDescriptor]];
     if (predicate.resultsLimit)
@@ -116,6 +119,44 @@
 @end
 
 @implementation PACDataStore
+
+#pragma mark - NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.files forKey:@"files"];
+    [aCoder encodeObject:self.users forKey:@"users"];
+    [aCoder encodeObject:self.cardTemplates forKey:@"cardTemplates"];
+    [aCoder encodeObject:self.cards forKey:@"cards"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [self init]) {
+        [self setFiles:[aDecoder decodeObjectForKey:@"files"]];
+        [self setUsers:[aDecoder decodeObjectForKey:@"users"]];
+        [self setCardTemplates:[aDecoder decodeObjectForKey:@"cardTemplates"]];
+        [self setCards:[aDecoder decodeObjectForKey:@"cards"]];
+    }
+    return self;
+}
+
+#pragma mark - Persistance
+
+- (void)persist {
+    [[NSKeyedArchiver archivedDataWithRootObject:self] writeToFile:@"PACDataStore_Dump" atomically:YES];
+}
+
+- (void)loadFromPersistedDump {
+    NSData *persistedData = [NSData dataWithContentsOfFile:@"PACDataStore_Dump"];
+    if (!persistedData)
+        return;
+    PACDataStore *persistedDataStore = [NSKeyedUnarchiver unarchiveObjectWithData:persistedData];
+    if (!persistedDataStore)
+        return;
+    [self setFiles:persistedDataStore.files];
+    [self setUsers:persistedDataStore.users];
+    [self setCardTemplates:persistedDataStore.cardTemplates];
+    [self setCards:persistedDataStore.cards];
+}
 
 #pragma mark - Read
 
@@ -146,47 +187,51 @@
     return filtered.count ? filtered[0] : nil;
 }
 
+- (PACFile *)fetchFileWithFilename:(NSString *)filename {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"filename == %@", filename];
+    NSArray *filtered = [self.files filteredArrayUsingPredicate:predicate];
+    return filtered.count ? filtered[0] : nil;
+}
+
 #pragma mark - Write
 
 - (void)loginUser:(PACUser *)user {
     [[NSUserDefaults standardUserDefaults] setObject:user.ID forKey:@"loggedInUserID"];
 }
 
-- (void)saveFile:(PACFile *)file {
-    [self.files addOrModifyFile:file];
-}
-
 - (void)saveModelObject:(PACModelObject *)modelObject {
     if ([modelObject isKindOfClass:[PACUser class]])
-        [self.users addOrModifyModelObject:modelObject];
+        [((NSMutableArray *)self.users) addOrModifyModelObject:modelObject];
     else if ([modelObject isKindOfClass:[PACCardTemplate class]])
-        [self.cardTemplates addOrModifyModelObject:modelObject];
+        [((NSMutableArray *)self.cardTemplates) addOrModifyModelObject:modelObject];
     else if ([modelObject isKindOfClass:[PACCard class]])
-        [self.cards addOrModifyModelObject:modelObject];
+        [((NSMutableArray *)self.cards) addOrModifyModelObject:modelObject];
+}
+
+- (void)saveFile:(PACFile *)file {
+    [(NSMutableArray *)self.files addOrModifyFile:file];
 }
 
 #pragma mark - Delete
 
+- (BOOL)deleteFileWithFilename:(NSString *)filename {
+    return [(NSMutableArray *)self.files removeFileWithFilename:filename];
+}
+
 - (void)logout {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"loggedInUserID"];
+    [[PACDataStore sharedStore] clear];
 }
 
 - (BOOL)deleteModelObject:(PACModelObject *)modelObject {
     BOOL deleted = NO;
-    if (!deleted) deleted = [self.users removeModelObject:modelObject];
-    if (!deleted) deleted = [self.cardTemplates removeModelObject:modelObject];
-    if (!deleted) deleted = [self.cards removeModelObject:modelObject];
+    if (!deleted) deleted = [((NSMutableArray *)self.users) removeModelObject:modelObject];
+    if (!deleted) deleted = [((NSMutableArray *)self.cardTemplates) removeModelObject:modelObject];
+    if (!deleted) deleted = [((NSMutableArray *)self.cards) removeModelObject:modelObject];
     return deleted;
 }
 
-- (BOOL)deleteFileWithFilename:(NSString *)filename {
-    return [self.files removeFileWithFilename:filename];
-}
-
 - (void)clear {
-    [self logout];
-    for (PACFile *file in self.files)
-        [self deleteFileWithFilename:file.filename];
     [self setFiles:[NSMutableArray array]];
     [self setUsers:[NSMutableArray array]];
     [self setCardTemplates:[NSMutableArray array]];

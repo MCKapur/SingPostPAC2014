@@ -6,16 +6,17 @@
 //  Copyright (c) 2014 Rohan Kapur. All rights reserved.
 //
 
+#import "PACDataStore.h"
 #import "PACAppDelegate.h"
 
 @interface PACAppDelegate ()
 @end
 
 @implementation PACAppDelegate
-            
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[PACDataStore sharedStore] loadFromPersistedDump];
     return YES;
 }
 
@@ -39,6 +40,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [[PACDataStore sharedStore] persist];
+    [[PACDataStore sharedStore] clear];
 }
 
 @end

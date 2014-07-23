@@ -8,6 +8,8 @@
 
 #import "PACModelObject.h"
 
+typedef void (^PhotoSetDownloadCompletionHandler)(NSError *error, NSDictionary *photoSet);
+
 /**
  A PACUser represents a client-
  side user object.
@@ -34,6 +36,11 @@
 @property (strong, readonly, nonatomic) NSString *name;
 
 /**
+ The user's location.
+ */
+@property (strong, readonly, nonatomic) NSString *location;
+
+/**
  The user's email.
  */
 @property (strong, readonly, nonatomic) NSString *email;
@@ -47,5 +54,16 @@
  The user's registration date.
  */
 @property (strong, readonly, nonatomic) NSDate *registrationDate;
+
+/**
+ The ID of the linked social account,
+ if any.
+ */
+@property (strong, readonly, nonatomic) NSString *socialID;
+
+/**
+ Retrieve a photo set for the user.
+ */
+- (void)downloadPhotoSetWithCompletionHandler:(PhotoSetDownloadCompletionHandler)completionHandler;
 
 @end

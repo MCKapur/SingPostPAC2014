@@ -14,6 +14,12 @@
 
 @implementation PACCardView
 
+- (void)setFrame:(CGRect)frame {
+    [self.scrollView setBounces:NO];
+    [self.scrollView setScrollEnabled:NO];
+    [super setFrame:frame];
+}
+
 #pragma mark - Image Renders
 
 - (UIImage *)thumbnailRender {
@@ -34,7 +40,7 @@
 
 - (UIImage *)fullRender {
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.bounds.size.width, self.bounds.size.height), self.opaque, 0.0);
-    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
     UIImage *fullRender = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return fullRender;
@@ -42,21 +48,13 @@
 
 #pragma mark - Init
 
-+ (PACCardView *)cardViewWithHTML:(NSString *)HTML andFrame:(CGRect)frame {
-    return [[self alloc] initWithHTML:HTML andFrame:frame];
++ (PACCardView *)cardViewWithHTML:(NSString *)HTML {
+    return [[self alloc] initWithHTML:HTML];
 }
 
-- (id)initWithHTML:(NSString *)HTML andFrame:(CGRect)frame {
-    if (self = [self initWithFrame:frame]) {
+- (id)initWithHTML:(NSString *)HTML {
+    if (self = [self init]) {
         [self setHTML:HTML];
-    }
-    return self;
-}
-
-- (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        [self.scrollView setBounces:NO];
-        [self.scrollView setScrollEnabled:NO];
     }
     return self;
 }

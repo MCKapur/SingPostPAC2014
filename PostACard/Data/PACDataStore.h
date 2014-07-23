@@ -29,24 +29,24 @@
  policies, data can be fetched
  from here.
  */
-@interface PACDataStore : NSObject
+@interface PACDataStore : NSObject <NSCoding>
 
 /**
  Unique collection of PACFiles.
  */
-@property (strong, readonly, nonatomic) NSMutableArray *files;
+@property (strong, readonly, nonatomic) NSArray *files;
 /**
  Unique collection of PACUsers.
  */
-@property (strong, readonly, nonatomic) NSMutableArray *users;
+@property (strong, readonly, nonatomic) NSArray *users;
 /**
  Unique collection of PACCardTemplates.
  */
-@property (strong, readonly, nonatomic) NSMutableArray *cardTemplates;
+@property (strong, readonly, nonatomic) NSArray *cardTemplates;
 /**
  Unique collection of PACCards.
  */
-@property (strong, readonly, nonatomic) NSMutableArray *cards;
+@property (strong, readonly, nonatomic) NSArray *cards;
 
 /**
  Returns the shared data store.
@@ -54,24 +54,26 @@
 + (PACDataStore *)sharedStore;
 
 /**
- Login to a user in the data
- store.
+ Save the store's data to the
+ device's file system.
  */
-- (void)loginUser:(PACUser *)user;
+- (void)persist;
+/**
+ Load the data store from the
+ saved data.
+ */
+- (void)loadFromPersistedDump;
+
 /**
  Write a model object to the
  data store.
  */
 - (void)saveModelObject:(PACModelObject *)modelObject;
 /**
- Write a file to the data store.
+ Delete a model object from the
+ data store.
  */
-- (void)saveFile:(PACFile *)file;
-
-/**
- Returns the logged-in user.
- */
-- (PACUser *)loggedInUser;
+- (BOOL)deleteModelObject:(PACModelObject *)modelObject;
 /**
  Fetch model objects from the
  data store with a predicate.
@@ -85,24 +87,40 @@
 - (PACModelObject *)fetchModelObjectWithID:(NSString *)ID;
 
 /**
- Clear the data store of all
- it's data.
+ Fetch a file from the data store
+ with an associated filename.
  */
-- (void)clear;
+- (PACFile *)fetchFileWithFilename:(NSString *)filename;
 /**
- Logout the logged-in user in
- the data store.
+ Write a file to the data store.
  */
-- (void)logout;
-/**
- Delete a model object from the
- data store.
- */
-- (BOOL)deleteModelObject:(PACModelObject *)modelObject;
+- (void)saveFile:(PACFile *)file;
 /**
  Delete the file associated with
  a filename from the data store.
  */
 - (BOOL)deleteFileWithFilename:(NSString *)filename;
+
+/**
+ Login to a user in the data
+ store.
+ */
+- (void)loginUser:(PACUser *)user;
+/**
+ Returns the logged-in user.
+ */
+- (PACUser *)loggedInUser;
+/**
+ Logout the logged-in user in
+ the data store and clear the
+ data store.
+ */
+- (void)logout;
+
+/**
+ Clear the data store of all
+ it's data.
+ */
+- (void)clear;
 
 @end

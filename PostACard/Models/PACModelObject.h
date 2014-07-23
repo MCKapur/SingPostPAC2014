@@ -6,39 +6,33 @@
 //  Copyright (c) 2014 Rohan Kapur. All rights reserved.
 //
 
-typedef void (^DownloadCompletionHandlerBlock)(NSError *error);
+@interface NSString (StringToDate)
+/**
+ Convert an ISO-8601 string returned
+ to an NSDate object.
+ */
+- (NSDate *)NSDateFromISOString;
+@end
+
+@interface NSDate (DateToString)
+/**
+ Convert an NSDate into an ISO-8601
+ date formatted string.
+ */
+- (NSString *)ISOStringFromNSDate;
+@end
 
 /**
  A PACModelObject is the base
- framework for unique PAC model
+ framework for uniqbue PAC model
  objects.
  */
-@interface PACModelObject : NSObject
+@interface PACModelObject : NSObject <NSCoding>
 
 /**
  A unique ID.
  */
 @property (strong, readonly, nonatomic) NSString *ID;
-
-/**
- If the object has fully down-
- loaded and satisfied it's
- properties.
- */
-@property (readonly, nonatomic) BOOL isDownloaded;
-
-/**
- Download the model object
- based on an ID query.
- */
-- (void)downloadWithCompletionHandler:(DownloadCompletionHandlerBlock)completionHandler;
-
-/**
- Call this method when a model
- object's 'isDownloaded' property
- is set to true.
- */
-- (void)downloaded;
 
 /**
  Only initialize the object
@@ -67,5 +61,18 @@ typedef void (^DownloadCompletionHandlerBlock)(NSError *error);
  dictionary.
  */
 - (instancetype)initWithJSON:(NSDictionary *)JSON;
+
+typedef void (^DownloadCompletionHandlerBlock)(NSError *error, PACModelObject *modelObject);
+/**
+ Download the model object and initialize
+ it's properties providing a cache policy.
+ */
+- (void)downloadWithCachePolicy:(PACQueryRequestCachePolicy)cachePolicy completionHandler:(DownloadCompletionHandlerBlock)completionHandler;
+
+/**
+ Returns YES the object has fully
+ downloaded and satisfied it's properties.
+ */
+- (BOOL)isDownloaded;
 
 @end

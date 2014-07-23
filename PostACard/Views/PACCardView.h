@@ -33,16 +33,14 @@
 
 /**
  Returns a newly initialized
- PACCardView with the card
- HTML and view frame.
+ PACCardView with the card HTML.
  */
-+ (PACCardView *)cardViewWithHTML:(NSString *)HTML andFrame:(CGRect)frame;
++ (PACCardView *)cardViewWithHTML:(NSString *)HTML;
 
 /**
  Returns a newly initialized
- PACCardView with the card
- HTML and view frame.
+ PACCardView with the card HTML.
  */
-- (id)initWithHTML:(NSString *)HTML andFrame:(CGRect)frame;
+- (id)initWithHTML:(NSString *)HTML;
 
 @end

@@ -16,12 +16,28 @@
 /**
  The API URL base
  */
-static NSString *const APIURLBase = @"";
+static
+NSString *const APIURLBase = @"";
+
+/* Social Auth Keys */
+
+static NSString *const TwitterOAuthConsumerKey = @"";
+static NSString *const TwitterOAuthConsumerSecret = @"";
+static NSString *const InstagramAccessToken = @"";
+
+/**
+ ISO-8601 date format as returned from backend.
+ */
+static NSString *const ISODateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
 
 /**
  Alphanumeric char set.
  */
-static NSString *const AlphanumericSet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXZY0123456789";
+static NSString *const alphanumericSet = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXZY0123456789";
+
+/* Endpoints */
+
+static NSString *const InstagramSearchQueryEndpoint = @"GET->https://api.instagram.com/v1/users/search";
 
 /**
  The login provider types.
@@ -58,3 +74,5 @@ typedef NS_ENUM (NSInteger, PACQueryRequestCachePolicy) {
 typedef NS_ENUM(NSInteger, PACCardTemplateCategory) {
     PACCardTemplateCategoryPlaceholder
 };
+
+typedef NSOperationQueue PACQueryRequestQueue;

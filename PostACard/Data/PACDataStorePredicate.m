@@ -14,6 +14,7 @@
  The predicate format.
  */
 @property (strong, readwrite, nonatomic) NSString *predicateFormat;
+@property (strong, readwrite, nonatomic) NSMutableArray *predicateFormatArguments;
 @property (strong, readwrite, nonatomic) Class modelClass;
 @end
 
