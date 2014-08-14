@@ -26,7 +26,7 @@
 
 - (id)initWithQueryPayload:(PACQueryPayload *)queryPayload andModelClass:(Class)modelClass {
     // Reliant on backend API.
-    return nil;
+    return [super init];
 }
 
 @end

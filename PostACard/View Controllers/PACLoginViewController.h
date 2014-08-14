@@ -14,6 +14,6 @@
  Facebook, Instagram and 
  Twitter.
  */
-@interface PACLoginViewController : UIViewController
+@interface PACLoginViewController : UIViewController <UITextFieldDelegate>
 
 @end

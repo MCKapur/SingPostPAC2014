@@ -12,6 +12,11 @@
  can choose the template
  for your card.
  */
-@interface PACCardSelectViewController : UIViewController
+
+#import "PACCardSectionTableViewCell.h"
+
+@interface PACCardSelectViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PACCardSectionTableViewCellDelegate>
+
+- (id)initWithCurrentContextImage:(UIImage *)currentContextImage;
 
 @end

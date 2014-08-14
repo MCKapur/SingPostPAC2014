@@ -9,6 +9,8 @@
 #import "PACNetworkingManager.h"
 #import "PACQueryPayload.h"
 #import "PACQueryPayload+ModularComposer.h"
+#import "PACSocialPacket.h"
+#import "PACSocialAuthFacebookClient.h"
 #import "PACUser.h"
 
 @interface PACUser ()
@@ -16,22 +18,21 @@
 @property (strong, readwrite, nonatomic) NSString *loginId;
 @property (strong, readwrite, nonatomic) NSString *name;
 @property (strong, readwrite, nonatomic) NSString *email;
-@property (strong, readwrite, nonatomic) NSString *location;
-@property (strong, readwrite, nonatomic) NSString *address;
 @property (strong, readwrite, nonatomic) NSDate *registrationDate;
-@property (strong, readwrite, nonatomic) NSString *socialID;
+@property (strong, readwrite, nonatomic) UIImage *profilePicture;
+@property (strong, readwrite, nonatomic) PACSocialPacket *socialPacket;
 @end
 
 @implementation PACUser
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"[ID: %@, Login Provider: %lu, Login ID: %@, Name: %@, Email: %@, Location: %@, Address: %@, Registration Date: %@, Social ID: %@]", self.ID, self.loginProvider, self.loginId, self.name, self.email, self.location, self.address, self.registrationDate, self.socialID];
+    return [NSString stringWithFormat:@"[ID: %@, Login Provider: %lu, Login ID: %@, Name: %@, Email: %@, Registration Date: %@, Social Packet: %@]", self.ID, self.loginProvider, self.loginId, self.name, self.email, self.registrationDate, self.socialPacket];
 }
 
 #pragma mark - Download
 
 - (BOOL)isDownloaded {
-    return [super isDownloaded] && self.loginId && self.name && self.email && self.location && self.address && self.registrationDate && self.socialID;
+    return [super isDownloaded] && self.loginId && self.name && self.email && self.registrationDate && self.socialPacket;
 }
 
 - (void)downloadWithCachePolicy:(PACQueryRequestCachePolicy)cachePolicy completionHandler:(DownloadCompletionHandlerBlock)completionHandler {
@@ -66,26 +67,25 @@
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:UIImageJPEGRepresentation(self.profilePicture, 1.0f) forKey:@"profilePicure"];
     [aCoder encodeInteger:self.loginProvider forKey:@"loginProvider"];
     [aCoder encodeObject:self.loginId forKey:@"loginId"];
     [aCoder encodeObject:self.name forKey:@"name"];
     [aCoder encodeObject:self.email forKey:@"email"];
-    [aCoder encodeObject:self.location forKey:@"location"];
-    [aCoder encodeObject:self.address forKey:@"address"];
     [aCoder encodeObject:self.registrationDate forKey:@"registrationDate"];
-    [aCoder encodeObject:self.socialID forKey:@"socialID"];
+    [aCoder encodeObject:self.socialPacket forKey:@"socialPacket"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
+        [self setProfilePicture:[UIImage imageWithData:[aDecoder decodeObjectForKey:@"profilePicture"]]];
         [self setLoginProvider:[aDecoder decodeIntegerForKey:@"loginProvider"]];
         [self setLoginId:[aDecoder decodeObjectForKey:@"loginId"]];
         [self setName:[aDecoder decodeObjectForKey:@"name"]];
         [self setEmail:[aDecoder decodeObjectForKey:@"email"]];
-        [self setLocation:[aDecoder decodeObjectForKey:@"location"]];
-        [self setAddress:[aDecoder decodeObjectForKey:@"address"]];
         [self setRegistrationDate:[aDecoder decodeObjectForKey:@"registrationDate"]];
-        [self setSocialID:[aDecoder decodeObjectForKey:@"socialID"]];
+        [self setSocialPacket:[aDecoder decodeObjectForKey:@"socialPacket"]];
     }
     return self;
 }
@@ -98,14 +98,13 @@
 
 - (id)initWithJSON:(NSDictionary *)JSON {
     if (self = [super initWithJSON:JSON]) {
+        [self setProfilePicture:[UIImage imageWithData:JSON[@"profilePicture"]]];
         [self setLoginProvider:(PACLoginProviderType)[JSON[@"loginProvider"] integerValue]];
         [self setLoginId:JSON[@"loginId"]];
         [self setName:JSON[@"name"]];
         [self setEmail:JSON[@"email"]];
-        [self setLocation:JSON[@"location"]];
-        [self setAddress:JSON[@"address"]];
         [self setRegistrationDate:[JSON[@"registrationDate"] NSDateFromISOString]];
-        [self setSocialID:JSON[@"socialID"]];
+        [self setSocialPacket:JSON[@"socialPacket"]];
     }
     return self;
 }

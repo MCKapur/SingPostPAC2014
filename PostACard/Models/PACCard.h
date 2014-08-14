@@ -15,7 +15,12 @@
  A PACCard represents a client
  side card object.
  */
-@interface PACCard : PACCardTemplate
+@interface PACCard : PACModelObject
+
+/**
+ The card's rendered image.
+ */
+@property (strong, readonly, nonatomic) UIImage *renderedImage;
 
 /**
  The card publisher.

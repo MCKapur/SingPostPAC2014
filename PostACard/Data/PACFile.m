@@ -84,8 +84,12 @@
 
 - (id)initWithFileName:(NSString *)filename andData:(NSData *)data {
     if (self = [self init]) {
-        [self setName:[filename componentsSeparatedByString:@"."][0]];
-        [self setExtension:[filename componentsSeparatedByString:@"."][1]];
+        if ([filename rangeOfString:@"."].location < (filename.length - 1)) {
+            [self setName:[filename componentsSeparatedByString:@"."][0]];
+            [self setExtension:[filename componentsSeparatedByString:@"."][1]];
+        }
+        else
+            [self setName:filename];
         if ([self.extension isEqualToString:@"png"])
             [self setHTTPContentType:@"image/png"];
         else if ([self.extension isEqualToString:@"jpg"] || [self.extension isEqualToString:@"jpeg"])

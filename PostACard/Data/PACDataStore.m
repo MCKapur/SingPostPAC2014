@@ -116,37 +116,59 @@
 @property (strong, readwrite, nonatomic) NSMutableArray *users;
 @property (strong, readwrite, nonatomic) NSMutableArray *cardTemplates;
 @property (strong, readwrite, nonatomic) NSMutableArray *cards;
+@property (strong, readwrite, nonatomic) NSString *loggedInID;
+@property (strong, readwrite, nonatomic) PACUser *loggedInUser;
 @end
 
 @implementation PACDataStore
 
+- (NSArray *)dynamicCategories {
+    return @[@"New Years", @"Christmas", @"Chinese New Year", @"Easter"];
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.dynamicCategories forKey:@"dynamicCategories"];
     [aCoder encodeObject:self.files forKey:@"files"];
     [aCoder encodeObject:self.users forKey:@"users"];
     [aCoder encodeObject:self.cardTemplates forKey:@"cardTemplates"];
     [aCoder encodeObject:self.cards forKey:@"cards"];
+    [aCoder encodeObject:self.loggedInID forKey:@"loggedInID"];
+    [aCoder encodeObject:self.loggedInUser forKey:@"loggedInUser"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [self init]) {
+        [self setDynamicCategories:[aDecoder decodeObjectForKey:@"dynamicCategories"]];
         [self setFiles:[aDecoder decodeObjectForKey:@"files"]];
         [self setUsers:[aDecoder decodeObjectForKey:@"users"]];
         [self setCardTemplates:[aDecoder decodeObjectForKey:@"cardTemplates"]];
         [self setCards:[aDecoder decodeObjectForKey:@"cards"]];
+        [self setLoggedInID:[aDecoder decodeObjectForKey:@"loggedInID"]];
+        [self setLoggedInUser:[aDecoder decodeObjectForKey:@"loggedInUser"]];
     }
     return self;
 }
 
 #pragma mark - Persistance
 
+- (void)setDumpPath:(NSString *)dumpPath {
+    [[NSUserDefaults standardUserDefaults] setObject:dumpPath forKey:@"CRDataStore_Dump_Path"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)dumpPath {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"CRDataStore_Dump_Path"];
+}
+
 - (void)persist {
-    [[NSKeyedArchiver archivedDataWithRootObject:self] writeToFile:@"PACDataStore_Dump" atomically:YES];
+    PACFile *dataStoreFile = [PACFile fileWithFileName:@"CRDataStore_Dump" andData:[NSKeyedArchiver archivedDataWithRootObject:self]];
+    [self setDumpPath:[dataStoreFile filePath]];
 }
 
 - (void)loadFromPersistedDump {
-    NSData *persistedData = [NSData dataWithContentsOfFile:@"PACDataStore_Dump"];
+    NSData *persistedData = [NSData dataWithContentsOfFile:[self dumpPath]];
     if (!persistedData)
         return;
     PACDataStore *persistedDataStore = [NSKeyedUnarchiver unarchiveObjectWithData:persistedData];
@@ -156,12 +178,21 @@
     [self setUsers:persistedDataStore.users];
     [self setCardTemplates:persistedDataStore.cardTemplates];
     [self setCards:persistedDataStore.cards];
+    [self setDynamicCategories:persistedDataStore.dynamicCategories];
+    [self setLoggedInUser:persistedDataStore.loggedInUser];
+    [self setLoggedInID:persistedDataStore.loggedInID];
 }
 
 #pragma mark - Read
 
+- (BOOL)isLoggedIn {
+    return !!_loggedInID;
+}
+
 - (PACUser *)loggedInUser {
-    return (PACUser *)[self fetchModelObjectWithID:[[NSUserDefaults standardUserDefaults] objectForKey:@"loggedInUserID"]];
+    if (![self isLoggedIn])
+        return nil;
+    return _loggedInUser ? _loggedInUser : [PACUser objectWithID:self.loggedInID];
 }
 
 - (NSArray *)fetchModelObjectsWithDataStorePredicate:(PACDataStorePredicate *)predicate {
@@ -196,7 +227,8 @@
 #pragma mark - Write
 
 - (void)loginUser:(PACUser *)user {
-    [[NSUserDefaults standardUserDefaults] setObject:user.ID forKey:@"loggedInUserID"];
+    [self setLoggedInID:user.ID];
+    [self setLoggedInUser:user];
 }
 
 - (void)saveModelObject:(PACModelObject *)modelObject {
@@ -219,7 +251,8 @@
 }
 
 - (void)logout {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"loggedInUserID"];
+    [self setLoggedInUser:nil];
+    [self setLoggedInID:nil];
     [[PACDataStore sharedStore] clear];
 }
 
@@ -236,6 +269,7 @@
     [self setUsers:[NSMutableArray array]];
     [self setCardTemplates:[NSMutableArray array]];
     [self setCards:[NSMutableArray array]];
+    [self setDynamicCategories:[NSArray array]];
 }
 
 #pragma mark - Init
@@ -255,6 +289,7 @@
         [self setUsers:[NSMutableArray array]];
         [self setCardTemplates:[NSMutableArray array]];
         [self setCards:[NSMutableArray array]];
+        [self setDynamicCategories:[NSArray array]];
     }
     return self;
 }

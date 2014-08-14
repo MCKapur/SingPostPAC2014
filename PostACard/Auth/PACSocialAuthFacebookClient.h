@@ -6,32 +6,41 @@
 //  Copyright (c) 2014 Rohan Kapur. All rights reserved.
 //
 
-#import "FBLoginView.h"
 #import "PACSocialAuthClient.h"
 
-@protocol PACSocialAuthFacebookClientDelegate <NSObject>
-- (void)successfullyDerivedUser:(PACUser *)user;
-- (void)failedToDeriveUserWithError:(NSError *)error;
-@end
+typedef void (^PACLoginCompletionHandlerBlock)(NSError *error, PACUser *user);
+typedef void (^PACLogoutCompletionHandlerBlock)(NSError *error);
+typedef void (^PACReviveCachedSessionCompletionHandlerBlock)(NSError *error);
+typedef void (^PACHandleColdStartCompletionHandlerBlock)(NSError *error);
+typedef void (^DownloadProfilePictureCompletionHandler)(NSError *error, UIImage *profilePicture);
 
-@interface PACSocialAuthFacebookClient : PACSocialAuthClient <FBLoginViewDelegate>
-
-/**
- The client's delegate.
- */
-@property (strong, readwrite, nonatomic) id<PACSocialAuthFacebookClientDelegate> delegate;
-
-/**
- Derive a basic PACUser from a
- Facebook account using the Social
- Framework.
- */
-- (void)deriveBasicUserFromFacebookSocialFrameworkWithCompletionHandler:(UserDownloadCompletionHandler)completionHandler;
+@interface PACSocialAuthFacebookClient : PACSocialAuthClient
 
 /**
  The client's required auth
- permissions.
+ read permissions.
  */
-- (NSArray *)requiredPermissions;
+- (NSArray *)readPermissions;
+
+/**
+ Attempt a Facebook login.
+ */
+- (void)loginWithCompletionHandler:(PACLoginCompletionHandlerBlock)completionHandler;
+/**
+ Logout from Facebook.
+ */
+- (void)logoutWithCompletionHandler:(PACLogoutCompletionHandlerBlock)completionHandler;
+
+/**
+ Revive the cached session, if any.
+ */
+- (void)reviveCachedSessionWithCompletionHandler:(PACReviveCachedSessionCompletionHandlerBlock)completionHandler;
+
+/**
+ Handle a cold start, a scenario where
+ the app is terminated during the Facebook
+ login process (switch to Safari).
+ */
+- (void)handleColdStartWithCompletionHandler:(PACHandleColdStartCompletionHandlerBlock)completionHandler;
 
 @end

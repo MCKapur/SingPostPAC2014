@@ -11,6 +11,7 @@
  */
 @interface PACAppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (strong, readwrite, nonatomic) UITabBarController *tabBarController;
 @property (strong, nonatomic) UIWindow *window;
 
 @end

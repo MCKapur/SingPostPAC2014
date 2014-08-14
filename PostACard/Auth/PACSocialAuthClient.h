@@ -8,6 +8,7 @@
 
 @class PACUser;
 
+typedef void (^PhotoFeedDownloadCompletionHandler)(NSError *error, NSArray *photos);
 typedef void (^UserDownloadCompletionHandler)(NSError *error, PACUser *derivedUser);
 
 @interface PACSocialAuthClient : NSObject
@@ -16,5 +17,10 @@ typedef void (^UserDownloadCompletionHandler)(NSError *error, PACUser *derivedUs
  The shared client.
  */
 + (instancetype)sharedClient;
+
+/**
+ Retrieve a feed of user's photos.
+ */
+- (void)retrievePhotosWithCompletionHandler:(PhotoFeedDownloadCompletionHandler)completionHandler;
 
 @end

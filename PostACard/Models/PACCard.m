@@ -11,6 +11,7 @@
 #import "PACCard.h"
 
 @interface PACCard ()
+@property (strong, readwrite, nonatomic) UIImage *renderedImage;
 @property (strong, readwrite, nonatomic) PACUser *publisher;
 @property (strong,  readwrite, nonatomic) NSDate *publishDate;
 @property (strong, readwrite, nonatomic) NSString *extendedMessage;
@@ -25,7 +26,7 @@
 #pragma mark - Download
 
 - (BOOL)isDownloaded {
-    return [super isDownloaded] && self.publisher && self.publishDate && self.extendedMessage;
+    return [super isDownloaded] && self.publisher && self.publishDate && self.extendedMessage && self.renderedImage;
 }
 
 - (void)downloadWithCachePolicy:(PACQueryRequestCachePolicy)cachePolicy completionHandler:(DownloadCompletionHandlerBlock)completionHandler {
@@ -45,6 +46,8 @@
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:UIImageJPEGRepresentation(self.renderedImage, 1.0f) forKey:@"renderedImage"];
     [aCoder encodeObject:self.publisher forKey:@"publisher"];
     [aCoder encodeObject:self.publishDate forKey:@"publishDate"];
     [aCoder encodeObject:self.extendedMessage forKey:@"extendedMessage"];
@@ -52,6 +55,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
+        [self setRenderedImage:[UIImage imageWithData:[aDecoder decodeObjectForKey:@"renderedImage"]]];
         [self setPublisher:[aDecoder decodeObjectForKey:@"publisher"]];
         [self setPublishDate:[aDecoder decodeObjectForKey:@"publishDate"]];
         [self setExtendedMessage:[aDecoder decodeObjectForKey:@"extendedMessage"]];
@@ -67,6 +71,7 @@
 
 - (id)initWithJSON:(NSDictionary *)JSON {
     if (self = [super initWithJSON:JSON]) {
+        [self setRenderedImage:[UIImage imageWithData:JSON[@"renderedImage"]]];
         [self setPublisher:[PACUser objectWithJSON:JSON[@"publisher"]]];
         [self setPublishDate:[JSON[@"publishDate"] NSDateFromISOString]];
         [self setExtendedMessage:JSON[@"extendedMessage"]];

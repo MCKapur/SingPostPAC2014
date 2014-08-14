@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Rohan Kapur. All rights reserved.
 //
 
-@class PACCardView;
-
 #import "PACModelObject.h"
 
 /**
@@ -18,29 +16,14 @@
 @interface PACCardTemplate : PACModelObject
 
 /**
- The card template front view.
+ The card's HTML.
  */
-@property (strong, readonly, nonatomic) PACCardView *frontView;
-
-/**
- The card template back view.
- */
-@property (strong, readonly, nonatomic) PACCardView *backView;
+@property (strong, readonly, nonatomic) NSString *HTML;
 
 /**
  The card template category/theme.
  */
-@property (readonly, nonatomic) PACCardTemplateCategory category;
-
-/**
- The card title.
- */
-@property (strong, readonly, nonatomic) NSString *title;
-
-/**
- The card template biography.
- */
-@property (strong, readonly, nonatomic) NSString *biography;
+@property (readonly, nonatomic) NSString *category;
 
 /**
  The card template's availability

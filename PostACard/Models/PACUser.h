@@ -9,6 +9,9 @@
 #import "PACModelObject.h"
 
 typedef void (^PhotoSetDownloadCompletionHandler)(NSError *error, NSDictionary *photoSet);
+typedef void (^DownloadSocialProfilePictureCompletionHandler)(NSError *error, UIImage *profilePicture);
+
+@class PACSocialPacket;
 
 /**
  A PACUser represents a client-
@@ -36,19 +39,9 @@ typedef void (^PhotoSetDownloadCompletionHandler)(NSError *error, NSDictionary *
 @property (strong, readonly, nonatomic) NSString *name;
 
 /**
- The user's location.
- */
-@property (strong, readonly, nonatomic) NSString *location;
-
-/**
  The user's email.
  */
 @property (strong, readonly, nonatomic) NSString *email;
-
-/**
- The user's address.
- */
-@property (strong, readonly, nonatomic) NSString *address;
 
 /**
  The user's registration date.
@@ -56,10 +49,14 @@ typedef void (^PhotoSetDownloadCompletionHandler)(NSError *error, NSDictionary *
 @property (strong, readonly, nonatomic) NSDate *registrationDate;
 
 /**
- The ID of the linked social account,
- if any.
+ The user's social packet.
  */
-@property (strong, readonly, nonatomic) NSString *socialID;
+@property (strong, readonly, nonatomic) PACSocialPacket *socialPacket;
+
+/**
+ The user's profile picture.
+ */
+@property (strong, readonly, nonatomic) UIImage *profilePicture;
 
 /**
  Retrieve a photo set for the user.

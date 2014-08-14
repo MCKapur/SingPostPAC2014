@@ -13,6 +13,13 @@
  created card, before publishing
  and sending it.
  */
-@interface PACCardPreviewViewController : UIViewController
+@interface PACCardPreviewViewController : UIViewController <UIWebViewDelegate, UIAlertViewDelegate>
+
+/**
+ Returns a newly initialized
+ PACCardPreviewViewController with
+ the card HTML.
+ */
+- (id)initWithHTML:(NSString *)HTML;
 
 @end

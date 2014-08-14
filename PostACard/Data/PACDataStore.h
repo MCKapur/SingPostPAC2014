@@ -47,6 +47,10 @@
  Unique collection of PACCards.
  */
 @property (strong, readonly, nonatomic) NSArray *cards;
+/**
+ The dynamically fetched categories.
+ */
+@property (strong, readwrite, nonatomic) NSArray *dynamicCategories;
 
 /**
  Returns the shared data store.
@@ -106,6 +110,11 @@
  store.
  */
 - (void)loginUser:(PACUser *)user;
+/**
+ Returns YES if there is a logged-in
+ user.
+ */
+- (BOOL)isLoggedIn;
 /**
  Returns the logged-in user.
  */

@@ -24,7 +24,7 @@
 
 /**
  A PACModelObject is the base
- framework for uniqbue PAC model
+ framework for unique PAC model
  objects.
  */
 @interface PACModelObject : NSObject <NSCoding>

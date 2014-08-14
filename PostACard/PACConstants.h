@@ -13,17 +13,36 @@
  available.
  */
 
+#define UIColorActualRGB(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1.0f]
+
 /**
  The API URL base
  */
-static
-NSString *const APIURLBase = @"";
+static NSString *const APIURLBase = @"";
+
+/* URL Hosts */
+
+static NSString *const PACTakeImageURLHost = @"post-a-card-take-image-scheme.com";
 
 /* Social Auth Keys */
 
-static NSString *const TwitterOAuthConsumerKey = @"";
-static NSString *const TwitterOAuthConsumerSecret = @"";
-static NSString *const InstagramAccessToken = @"";
+static NSString *const PACTwitterOAuthConsumerKey = @"";
+static NSString *const PACTwitterOAuthConsumerSecret = @"";
+static NSString *const PACInstagramAccessToken = @"";
+
+/* Local Notifications */
+
+static NSString *const PACNotificationLoggedIn = @"PACNotificationLoggedIn";
+static NSString *const PACNotificationLoggingIn = @"PACNotificationLoggingIn";
+
+/* Tab bar icon image paths */
+static NSString *const PACCategoriesTabBarIconImage_NotSelected = @"ic_tabbar_categories_unselected.png";
+static NSString *const PACCategoriesTabBarIconImage_Selected = @"ic_tabbar_categories_selected.png";
+static NSString *const PACProfileTabBarIconImage_NotSelected = @"ic_tabbar_profile_unselected.png";
+static NSString *const PACProfileTabBarIconImage_Selected = @"ic_tabbar_profile_selected.png";
+
+/* Glyph icon image paths */
+static NSString *const PACComposeIconImage = @"ic_compose_photo.png";
 
 /**
  ISO-8601 date format as returned from backend.
@@ -50,6 +69,16 @@ typedef NS_ENUM(NSInteger, PACLoginProviderType) {
 };
 
 /**
+ The content consumption (interaction) modes
+ for card views.
+ */
+typedef NS_ENUM(NSInteger, PACCardViewContentConsumptionMode) {
+    PACCardViewContentConsumptionModePreview = 0,
+    PACCardViewContentConsumptionModeView,
+    PACCardViewContentConsumptionModeEdit
+};
+
+/**
  Different cache policies when querying data.
  */
 typedef NS_ENUM (NSInteger, PACQueryRequestCachePolicy) {
@@ -66,13 +95,6 @@ typedef NS_ENUM (NSInteger, PACQueryRequestCachePolicy) {
      Query the backend only.
      */
     PACQueryRequestCachePolicyRemoteOnly
-};
-
-/**
- The card template categories.
- */
-typedef NS_ENUM(NSInteger, PACCardTemplateCategory) {
-    PACCardTemplateCategoryPlaceholder
 };
 
 typedef NSOperationQueue PACQueryRequestQueue;

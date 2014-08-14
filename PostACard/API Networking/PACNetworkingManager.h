@@ -13,6 +13,7 @@
 typedef void (^LoginRegisterUserCompletionHandlerBlock)(NSError *error, PACUser *user);
 typedef void (^SearchCompletionHandlerBlock)(NSError *error, NSArray *results);
 typedef void (^PublishCardCompletionHandlerBlock)(NSError *error, PACCard *card);
+typedef void (^DynamicCategoriesDownloadCompletionHandlerBlock)(NSError *error, NSArray *categories);
 
 /**
  The PACNetworkingManager provides
@@ -22,6 +23,11 @@ typedef void (^PublishCardCompletionHandlerBlock)(NSError *error, PACCard *card)
  store.
  */
 @interface PACNetworkingManager : NSObject
+
+/**
+ Fetch the dynamic categories.
+ */
+- (void)fetchDynamicCategoriesWithCompletionHandlers:(DynamicCategoriesDownloadCompletionHandlerBlock)completionHandler;
 
 /**
  Register a PACUser with a query payload.
