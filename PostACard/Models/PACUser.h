@@ -19,6 +19,9 @@ typedef void (^DownloadSocialProfilePictureCompletionHandler)(NSError *error, UI
  */
 @interface PACUser : PACModelObject
 
+@property (nonatomic) int width;
+@property (nonatomic) int height;
+
 /**
  The service used to sign
  up with the account.
